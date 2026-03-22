@@ -8,7 +8,6 @@ function showToast(message, iconClass = 'fa-info-circle') {
     }
     const toast = document.createElement('div');
     toast.className = 'toast';
-    // innerHTML allows the Font Awesome <i> tag to render
     toast.innerHTML = `<i class="fas ${iconClass}"></i> ${message}`;
     container.appendChild(toast);
     
@@ -41,7 +40,6 @@ if (themeToggle) {
 }
 
 // --- PROJECT DATA ---
-// Note: Ensure your images are in the 'image/' folder
 const projectData = {
     'plotease': {
         title: "Plotease: Faculty Management UI",
@@ -84,7 +82,6 @@ window.openProjectModal = function(id) {
     currentSlideIndex = 0;
     document.getElementById('modalTitle').innerText = project.title;
     window.initCarousel(project.images);
-    
     document.getElementById('modalTags').innerHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
     
     const tabContainer = document.querySelector('.modal-tabs');
@@ -99,7 +96,7 @@ window.openProjectModal = function(id) {
     }
     
     document.getElementById('projectModal').style.display = "block";
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden"; // Locks background scroll
     showToast(`Viewing ${project.title}`, "fa-eye");
 
     if (project.images.length > 1) startAutoPlay();
@@ -163,11 +160,7 @@ window.switchTab = function(event, tabKey) {
 window.closeModal = function() {
     stopAutoPlay();
     document.getElementById('projectModal').style.display = "none";
-    document.body.style.overflow = "auto";
-};
-
-window.onclick = (e) => {
-    if (e.target.id == 'projectModal') window.closeModal();
+    document.body.style.overflow = "auto"; // Restores scroll
 };
 
 // --- GLOBAL NAVIGATION & FORM LOGIC ---
@@ -184,20 +177,24 @@ document.addEventListener('DOMContentLoaded', () => {
         updateThemeIcon(true);
     }
 
-    // 2. Mobile Menu
+    // 2. Mobile Menu Fix (Body Locking)
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            navLinksList.classList.toggle('active');
+            const isActive = navLinksList.classList.toggle('active');
             const toggleIcon = menuToggle.querySelector('i');
             toggleIcon.classList.toggle('fa-bars');
             toggleIcon.classList.toggle('fa-times');
+            
+            // Prevent background scroll when menu is open on mobile
+            document.body.style.overflow = isActive ? 'hidden' : 'auto';
         });
     }
 
-    // 3. Navigation Links
+    // 3. Navigation Links (Close menu on click)
     allNavLinks.forEach((link) => {
         link.addEventListener('click', function() {
             navLinksList.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scroll
             if (menuToggle) {
                 const toggleIcon = menuToggle.querySelector('i');
                 toggleIcon.classList.add('fa-bars');
@@ -216,50 +213,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-  // --- CONTACT FORM "SIMULATED" SUBMISSION ---
+    // 5. Contact Form Simulation
     const contactForm = document.getElementById('portfolioContactForm');
     const submitBtn = contactForm ? contactForm.querySelector('.submit-btn') : null;
     const submitText = document.getElementById('submitText');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevents the page from refreshing or redirecting to PHP
-
-            // 1. Enter Loading State
+            e.preventDefault();
             if (submitBtn) submitBtn.disabled = true;
             if (submitText) submitText.innerText = "Sending...";
             
-            // 2. Simulate a "Server Delay" (1.5 seconds)
             setTimeout(() => {
-                // 3. Trigger the Success Toast
                 showToast("Message Sent Successfully!", "fa-paper-plane");
-
-                // 4. Reset the Form fields
                 contactForm.reset();
-
-                // 5. Reset Button State
                 if (submitBtn) submitBtn.disabled = false;
                 if (submitText) submitText.innerText = "Send Message";
-                
-            }, 1500); // 1500ms = 1.5 seconds of "fake" loading
+            }, 1500);
         });
     }
     
-    // 6. Scroll Observers
+    // 6. Intersection Observers (Smooth Scroll & Reveals)
     const observerOptions = { root: null, rootMargin: '-25% 0px -55% 0px', threshold: 0 };
-    const observerCallback = (entries) => {
+    const navObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 const currentId = entry.target.getAttribute('id');
                 allNavLinks.forEach((link) => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentId}`) link.classList.add('active');
+                    link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
                 });
             }
         });
-    };
-    const navObserver = new IntersectionObserver(observerCallback, observerOptions);
-    allSections.forEach((section) => navObserver.observe(section));
+    }, observerOptions);
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -272,6 +257,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     allSections.forEach(section => {
         section.classList.add('reveal');
+        navObserver.observe(section);
         revealObserver.observe(section);
     });
 });
+
+// Close Modals or Menus if clicking outside
+window.onclick = (e) => {
+    if (e.target.id === 'projectModal') window.closeModal();
+};
