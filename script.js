@@ -142,9 +142,15 @@ window.openProjectModal = function(id) {
     }
 
     window.switchTab(null, 'about');
-    
+
     document.getElementById('projectModal').style.display = "block";
     document.body.style.overflow = "hidden";
+
+    // Reset scroll position so the title/tags are visible instead of wherever
+    // the modal was last scrolled to (it's the same DOM element reused each open)
+    const modalEl = document.getElementById('projectModal');
+    if (modalEl) modalEl.scrollTop = 0;
+
     showToast(`Viewing ${project.title}`, "fa-eye");
 
     if (project.images.length > 1) startAutoPlay();
