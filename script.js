@@ -91,6 +91,24 @@ const projectData = {
             </div>
             <p>Went from concept to a working full-stack system covering sales, inventory, and reporting, with a UI designed to stay fast under a live-updating dashboard.</p>`
         }
+    },
+    'venos': {
+        title: "VenOS: Point-of-Sale for One-Counter Shops",
+        images: ["image/venos-landing.png", "image/venos-sale.png", "image/venos-dashboard.png", "image/venos-reports.png", "image/venos-products.png"],
+        tags: ["Tailwind CSS", "Full-stack", "Live"],
+        liveDemo: "https://venpos.vercel.app",
+        repo: "https://github.com/Vener2626",
+        tabs: {
+            'about': `<p>VenOS is a deployed point-of-sale system built for small, single-counter businesses like cafes and sari-sari stores — the kind of shop that's still tallying sales by hand or juggling a notebook and a calculator.</p>`,
+            'general': `<p>Replace manual tallying with one screen a cashier can learn in minutes: ring up sales, track cash vs. GCash, and see what's actually selling — no spreadsheets required.</p>`,
+            'specific': `<ul><li>Tap-to-cart checkout with per-item discounts and cash/GCash tracking</li><li>PIN-based login that routes cashiers and owners to different views</li><li>Live dashboard: today's revenue, transaction count, average order size</li><li>Daily/Weekly/Monthly/Yearly sales reports with one-click CSV export</li><li>Product catalog management with custom icons and categories</li></ul>`,
+            'results': `<div class="case-metrics">
+                <div class="metric"><span class="metric-num">6</span><span class="metric-label">Product categories supported</span></div>
+                <div class="metric"><span class="metric-num">4</span><span class="metric-label">Report views (Daily–Yearly)</span></div>
+                <div class="metric"><span class="metric-num">2</span><span class="metric-label">Payment methods tracked live</span></div>
+            </div>
+            <p>Built with Tailwind CSS and deployed live on Vercel — this one isn't just a screenshot, you can actually click around it.</p>`
+        }
     }
 };
 
