@@ -44,21 +44,21 @@ if (themeToggle) {
 // Note: Ensure your images are in the 'image/' folder
 const projectData = {
     'plotease': {
-        title: "Plotease: Faculty Management UI",
+        title: "Plotease: Faculty, Room & Section Scheduling",
         images: ["image/plotease.png", "image/plotease2.png", "image/plotease3.png", "image/plotease4.png"],
-        tags: ["Capstone", "UI/UX", "ISO-Compliant"],
+        tags: ["Capstone", "Group Project", "UI/UX Designer"],
         liveDemo: "", // paste your deployed link, e.g. "https://plotease.example.com"
         repo: "https://github.com/Vener2626",
         tabs: {
-            'about': `<p>Capstone project for ICS - BASU. An ISO-compliant faculty management system, focused end-to-end on UI/UX design: research, wireframes, and a production-ready Figma-to-code handoff.</p>`,
-            'general': `<p>Design a scheduling interface that removes the manual, spreadsheet-driven process faculty coordinators relied on — cutting the time and errors involved in building a compliant class schedule.</p>`,
-            'specific': `<ul><li>Map the ISO-compliance rules into a guided scheduling flow</li><li>Automate workload balancing across faculty</li><li>Design conflict detection that surfaces overlaps before submission</li></ul>`,
+            'about': `<p>Plotease was our group's Capstone project for ICS – BASU: a system that automatically generates faculty, room, and section schedules with zero conflicts across all three at once. It was a team build, and my role on it was UI/UX Designer — research, wireframes, and the Figma-to-code design handoff.</p>`,
+            'general': `<p>Replace the manual, spreadsheet-driven process schedulers relied on with a guided system that generates a class schedule with no double-booked faculty, rooms, or sections — cutting the time and errors involved in building one by hand each term.</p>`,
+            'specific': `<ul><li>Designed the scheduling flow that checks faculty, room, and section availability simultaneously, not one at a time</li><li>Designed conflict-detection UI that surfaces overlaps before a schedule is submitted</li><li>Mapped ISO-compliance requirements into the interface end-to-end</li><li>Delivered wireframes and a full Figma design system for the dev team to build from</li></ul>`,
             'results': `<div class="case-metrics">
+                <div class="metric"><span class="metric-num">3</span><span class="metric-label">Conflict types checked at once</span></div>
                 <div class="metric"><span class="metric-num">4</span><span class="metric-label">Stakeholder review rounds</span></div>
                 <div class="metric"><span class="metric-num">30+</span><span class="metric-label">Screens designed</span></div>
-                <div class="metric"><span class="metric-num">100%</span><span class="metric-label">ISO checklist coverage</span></div>
             </div>
-            <p>Delivered a full design system in Figma, validated with faculty coordinators through usability sessions, that became the build spec for the development team.</p>`
+            <p>As UI/UX Designer on the team, I delivered a full design system in Figma, validated with faculty coordinators through usability sessions, that became the build spec the rest of the team developed against.</p>`
         }
     },
     'momo': {
@@ -131,7 +131,8 @@ const projectData = {
     'momocart': {
         title: "MOMOCart: QR Rental, Attendance & Sales System",
         images: ["image/momocart-landing.png", "image/momocart-login.png", "image/momocart-logbook.png", "image/momocart-attendance.png", "image/momocart-carts.png"],
-        tags: ["PHP", "AJAX", "MySQL", "Client Work"],
+        tags: ["PHP", "AJAX", "MySQL", "Client Work", "Live"],
+        liveDemo: "https://momocartheadoffice.com",
         repo: "https://github.com/Vener2626",
         tabs: {
             'about': `<p><strong>This is a real client project</strong> — sold and deployed in May 2026, and still running the client's day-to-day cart rental business today. MOMOCart is a digital logbook system that replaced a paper-based process across multiple physical branches: renting out mobility scooters via QR code, verifying staff attendance with selfie photos, and tracking sales and cash/GCash totals per branch.</p>`,
