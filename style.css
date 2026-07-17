@@ -807,7 +807,7 @@ body.light-mode .theme-toggle {
 /* --- UPDATED IMAGE FIT FOR MODAL --- */
 .modal-image {
     width: 100%; /* Takes full width of the grid column */
-    aspect-ratio: 4 / 5; /* Fixed ratio so tall/portrait screenshots can't blow out the modal */
+    height: 460px; /* Fixed height so any screenshot shape (portrait or landscape) fits consistently */
     border-radius: 20px;
     border: 1px solid var(--border-white);
     background: rgba(30, 41, 59, 0.3); /* Optional: subtle subtle background hint */
@@ -909,6 +909,7 @@ body.light-mode .modal-image {
 @media (max-width: 900px) {
     .modal-body { grid-template-columns: 1fr; }
     .modal-content { width: 95%; padding: 30px 20px; margin: 10% auto; }
+    .modal-image { height: 280px; }
 }
 body.light-mode .modal-content {
     background: #ffffff;
