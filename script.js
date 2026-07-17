@@ -127,6 +127,23 @@ const projectData = {
             </div>
             <p>A front-end only build — the booking flow and chat are interactive UI/UX pieces (no backend or live payments), designed to show how a full luxury booking journey should feel end-to-end.</p>`
         }
+    },
+    'momocart': {
+        title: "MOMOCart: QR Rental, Attendance & Sales System",
+        images: ["image/momocart-landing.png", "image/momocart-login.png", "image/momocart-logbook.png", "image/momocart-attendance.png", "image/momocart-carts.png"],
+        tags: ["PHP", "AJAX", "MySQL", "Client Work"],
+        repo: "https://github.com/Vener2626",
+        tabs: {
+            'about': `<p><strong>This is a real client project</strong> — sold and deployed in May 2026, and still running the client's day-to-day cart rental business today. MOMOCart is a digital logbook system that replaced a paper-based process across multiple physical branches: renting out mobility scooters via QR code, verifying staff attendance with selfie photos, and tracking sales and cash/GCash totals per branch.</p>`,
+            'general': `<p>Replace a paper logbook and manual cash counting with one system a non-technical staff member can use — scan a QR code to log a rental, take a selfie to clock in, and give the owner a live, accurate picture of sales across every branch without waiting on end-of-day tallies.</p>`,
+            'specific': `<ul><li>QR-code-based cart registration and rental tracking, with printable PDF/QR labels per cart</li><li>Selfie-verified attendance with time in/out photo proof, per branch</li><li>Real-time logbook updates via AJAX — no page reloads while staff are actively logging rentals</li><li>CSV export for attendance and Excel/PDF export for sales reporting</li><li>Multi-branch architecture: 6 branches, role-based staff accounts, centralized admin dashboard</li><li>Built with native PHP + MySQL, designed in Figma first, deployed on Hostinger</li></ul>`,
+            'results': `<div class="case-metrics">
+                <div class="metric"><span class="metric-num">6</span><span class="metric-label">Branches running live</span></div>
+                <div class="metric"><span class="metric-num">86</span><span class="metric-label">Carts tracked via QR</span></div>
+                <div class="metric"><span class="metric-num">3+</span><span class="metric-label">Months in production</span></div>
+            </div>
+            <p>Sold to a client, deployed, and still in active daily use by their staff across branches — this is the one project on this page that's already proven itself outside a school assignment or personal build.</p>`
+        }
     }
 };
 
