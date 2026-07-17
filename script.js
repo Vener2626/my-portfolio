@@ -109,6 +109,24 @@ const projectData = {
             </div>
             <p>Built with Tailwind CSS and deployed live on Vercel — this one isn't just a screenshot, you can actually click around it.</p>`
         }
+    },
+    'venvillas': {
+        title: "Ven Villas: Luxury Villa Booking & AI Concierge",
+        images: ["image/venvillas-hero.png", "image/venvillas-listings.png", "image/venvillas-destinations.png", "image/venvillas-chatbot.png", "image/venvillas-booking.png"],
+        tags: ["Tailwind CSS", "JavaScript", "Live"],
+        liveDemo: "https://ven-villa.vercel.app",
+        repo: "https://github.com/Vener2626",
+        tabs: {
+            'about': `<p>Ven Villas is a front-end concept build for a luxury villa rental brand — full-page marketing site, villa listings, destination browsing, guest reviews, an FAQ section, and two interactive pieces: a multi-step booking flow and an AI-styled concierge chat widget named "Aria."</p>`,
+            'general': `<p>Design a booking experience that matches the premium feel of the brand itself — clean editorial typography, warm neutral tones, and interactions that feel considered rather than templated, from browsing a villa to completing a reservation.</p>`,
+            'specific': `<ul><li>3-step booking modal: choose villa → dates & guests → confirm, with inline validation</li><li>"Aria" concierge chat with quick-reply buttons for common questions (check-in times, cancellation policy, amenities)</li><li>Scroll-reveal animations and a filterable villa/destination grid</li><li>Fully responsive layout, built with Tailwind CSS utility classes throughout</li></ul>`,
+            'results': `<div class="case-metrics">
+                <div class="metric"><span class="metric-num">3</span><span class="metric-label">Step booking flow</span></div>
+                <div class="metric"><span class="metric-num">5</span><span class="metric-label">Countries of listings shown</span></div>
+                <div class="metric"><span class="metric-num">6</span><span class="metric-label">Chat quick-reply topics</span></div>
+            </div>
+            <p>A front-end only build — the booking flow and chat are interactive UI/UX pieces (no backend or live payments), designed to show how a full luxury booking journey should feel end-to-end.</p>`
+        }
     }
 };
 
