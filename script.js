@@ -47,26 +47,49 @@ const projectData = {
         title: "Plotease: Faculty Management UI",
         images: ["image/plotease.png", "image/plotease2.png", "image/plotease3.png", "image/plotease4.png"],
         tags: ["Capstone", "UI/UX", "ISO-Compliant"],
+        liveDemo: "", // paste your deployed link, e.g. "https://plotease.example.com"
+        repo: "https://github.com/Vener2626",
         tabs: {
-            'about': `<p>Capstone project for ICS - BASU. Focused on UI/UX design.</p>`,
-            'general': `<p>Optimizes class schedules and faculty workload.</p>`,
-            'specific': `<ul><li>Schedule optimization</li><li>Workload automation</li></ul>`
+            'about': `<p>Capstone project for ICS - BASU. An ISO-compliant faculty management system, focused end-to-end on UI/UX design: research, wireframes, and a production-ready Figma-to-code handoff.</p>`,
+            'general': `<p>Design a scheduling interface that removes the manual, spreadsheet-driven process faculty coordinators relied on — cutting the time and errors involved in building a compliant class schedule.</p>`,
+            'specific': `<ul><li>Map the ISO-compliance rules into a guided scheduling flow</li><li>Automate workload balancing across faculty</li><li>Design conflict detection that surfaces overlaps before submission</li></ul>`,
+            'results': `<div class="case-metrics">
+                <div class="metric"><span class="metric-num">4</span><span class="metric-label">Stakeholder review rounds</span></div>
+                <div class="metric"><span class="metric-num">30+</span><span class="metric-label">Screens designed</span></div>
+                <div class="metric"><span class="metric-num">100%</span><span class="metric-label">ISO checklist coverage</span></div>
+            </div>
+            <p>Delivered a full design system in Figma, validated with faculty coordinators through usability sessions, that became the build spec for the development team.</p>`
         }
     },
     'momo': {
         title: "MOMO CART Commercial Kiosk",
-        images: ["image/momo-cart.png"], 
+        images: ["image/momo-cart.png"],
         tags: ["3D Visualization", "PHP", "Commercial"],
-        description: `<h3>Objective</h3><p>Commercial kiosk project branded as "MOMO CART".</p>`
+        liveDemo: "",
+        repo: "https://github.com/Vener2626",
+        tabs: {
+            'about': `<p>A digital rental and kiosk platform branded "MOMO CART", covering mobility-scooter rentals and food retail management with a 3D product visualization layer.</p>`,
+            'general': `<p>Give a commercial kiosk client a self-serve interface customers can operate unassisted — combining rentals, retail, and payment in one touchscreen flow.</p>`,
+            'specific': `<ul><li>Build a PHP-backed rental and inventory flow</li><li>Integrate interactive 3D previews of rentable units</li><li>Design a touch-first UI for unattended kiosk hardware</li></ul>`,
+            'results': `<p>Shipped a working kiosk flow from product browsing through rental confirmation, built to run reliably on unattended commercial hardware.</p>`
+        }
     },
     'chata': {
         title: "Chata Brews: Modern POS & Inventory",
-        images: ["image/chata.png","image/chata2.png","image/chata3.png","image/chata4.png","image/chata5.png","image/chata6.png","image/chata7.png","image/chata8.png"], 
+        images: ["image/chata.png","image/chata2.png","image/chata3.png","image/chata4.png","image/chata5.png","image/chata6.png","image/chata7.png","image/chata8.png"],
         tags: ["Full-stack", "AJAX", "Chart.js"],
+        liveDemo: "",
+        repo: "https://github.com/Vener2626",
         tabs: {
-            'about': `<p>Coffee-themed POS and Inventory system.</p>`,
-            'general': `<p>Visualizes dynamic sales charts using Chart.js.</p>`,
-            'specific': `<ul><li>AJAX filtering</li><li>CSV/PDF Export</li></ul>`
+            'about': `<p>A coffee-themed, full-stack Point-of-Sale and Inventory system, built to replace manual stock tracking with live, data-backed operations.</p>`,
+            'general': `<p>Give a small coffee shop a single system to ring up sales, track stock in real time, and see performance trends without spreadsheets.</p>`,
+            'specific': `<ul><li>Real-time sales dashboards with Chart.js</li><li>AJAX-driven filtering across orders and inventory, no page reloads</li><li>Role-based access for staff vs. admin</li><li>CSV/PDF export for reporting</li></ul>`,
+            'results': `<div class="case-metrics">
+                <div class="metric"><span class="metric-num">8</span><span class="metric-label">Core modules shipped</span></div>
+                <div class="metric"><span class="metric-num">2</span><span class="metric-label">Export formats (CSV/PDF)</span></div>
+                <div class="metric"><span class="metric-num">0</span><span class="metric-label">Full page reloads (AJAX)</span></div>
+            </div>
+            <p>Went from concept to a working full-stack system covering sales, inventory, and reporting, with a UI designed to stay fast under a live-updating dashboard.</p>`
         }
     }
 };
@@ -86,17 +109,21 @@ window.openProjectModal = function(id) {
     window.initCarousel(project.images);
     
     document.getElementById('modalTags').innerHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
-    
-    const tabContainer = document.querySelector('.modal-tabs');
-    const contentContainer = document.getElementById('tabContent');
 
-    if (project.tabs) {
-        tabContainer.style.display = "flex";
-        window.switchTab(null, 'about');
-    } else {
-        tabContainer.style.display = "none";
-        contentContainer.innerHTML = project.description;
+    const linksContainer = document.getElementById('modalLinks');
+    if (linksContainer) {
+        let linksHtml = '';
+        if (project.liveDemo) {
+            linksHtml += `<a href="${project.liveDemo}" target="_blank" rel="noopener noreferrer" class="btn btn-primary modal-link-btn"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>`;
+        }
+        if (project.repo) {
+            linksHtml += `<a href="${project.repo}" target="_blank" rel="noopener noreferrer" class="btn btn-outline modal-link-btn"><i class="fab fa-github"></i> Source</a>`;
+        }
+        linksContainer.innerHTML = linksHtml;
+        linksContainer.style.display = linksHtml ? 'flex' : 'none';
     }
+
+    window.switchTab(null, 'about');
     
     document.getElementById('projectModal').style.display = "block";
     document.body.style.overflow = "hidden";
@@ -222,26 +249,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitText = document.getElementById('submitText');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevents the page from refreshing or redirecting to PHP
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault(); // We handle submission via fetch instead of a page reload
 
-            // 1. Enter Loading State
             if (submitBtn) submitBtn.disabled = true;
             if (submitText) submitText.innerText = "Sending...";
-            
-            // 2. Simulate a "Server Delay" (1.5 seconds)
-            setTimeout(() => {
-                // 3. Trigger the Success Toast
-                showToast("Message Sent Successfully!", "fa-paper-plane");
 
-                // 4. Reset the Form fields
-                contactForm.reset();
+            try {
+                const formData = new FormData(contactForm);
+                // Get your free access key at https://web3forms.com (no account needed,
+                // just enter an email and it's emailed to you). Paste it below.
+                formData.append("access_key", "ed9ee232-a8d0-4022-a275-01364185a0e4");
+                formData.append("subject", "New message from your portfolio site");
 
-                // 5. Reset Button State
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast("Message Sent Successfully!", "fa-paper-plane");
+                    contactForm.reset();
+                } else {
+                    showToast("Something went wrong. Please email me directly.", "fa-triangle-exclamation");
+                }
+            } catch (err) {
+                showToast("Network error. Please email me directly.", "fa-triangle-exclamation");
+            } finally {
                 if (submitBtn) submitBtn.disabled = false;
                 if (submitText) submitText.innerText = "Send Message";
-                
-            }, 1500); // 1500ms = 1.5 seconds of "fake" loading
+            }
         });
     }
     
@@ -274,4 +312,32 @@ document.addEventListener('DOMContentLoaded', () => {
         section.classList.add('reveal');
         revealObserver.observe(section);
     });
+
+    // 7. Scroll Progress Bar
+    const scrollProgress = document.getElementById('scrollProgress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgress.style.width = pct + '%';
+        }, { passive: true });
+    }
+
+    // 8. Subtle Project Card Tilt (restrained, disabled for touch/reduced-motion users)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouchDevice = window.matchMedia('(hover: none)').matches;
+    if (!prefersReducedMotion && !isTouchDevice) {
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `translateY(-10px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
 });

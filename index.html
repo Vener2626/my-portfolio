@@ -11,6 +11,7 @@
 <body>
 
     <nav class="navbar">
+        <div class="scroll-progress" id="scrollProgress"></div>
         <div class="logo">Portfolio</div>
         <ul class="nav-links">
             <li><a href="#home" class="active">Home</a></li>
@@ -237,11 +238,13 @@
                     <div class="modal-text">
                         <h2 id="modalTitle"></h2>
                         <div id="modalTags" class="project-tags"></div>
+                        <div id="modalLinks" class="modal-links"></div>
                         
                         <div class="modal-tabs">
                             <button class="tab-btn active" onclick="switchTab(event, 'about')">About</button>
                             <button class="tab-btn" onclick="switchTab(event, 'general')">General Objective</button>
                             <button class="tab-btn" onclick="switchTab(event, 'specific')">Specific Objective</button>
+                            <button class="tab-btn" onclick="switchTab(event, 'results')">Results</button>
                         </div>
 
                         <div id="tabContent" class="tab-pane"></div>
@@ -288,6 +291,7 @@
 
         <div class="contact-form-card">
             <form id="portfolioContactForm">
+                <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
                 <div class="input-group">
                     <label>Your Name</label>
                     <input type="text" name="name" placeholder="John Doe" required>
