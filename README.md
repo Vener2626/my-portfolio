@@ -21,7 +21,7 @@ I'm a 2026 graduate from Bulacan, focused on front-end development and UI/UX des
 - **VenOS** — A deployed point-of-sale system for single-counter small businesses.
 - **Ven Villas** — A luxury villa booking site with a multi-step reservation flow and an AI-styled concierge chat.
 - **Chata Brews** — A full-stack POS and inventory system with live dashboards and CSV/PDF export.
-- **Plotease** — A faculty management UI, capstone project for ICS – BASU.
+- **Plotease** — A faculty management UI, capstone project for ICS – BSAU.
 
 ## Contact
 
