@@ -807,7 +807,7 @@ body.light-mode .theme-toggle {
 /* --- UPDATED IMAGE FIT FOR MODAL --- */
 .modal-image {
     width: 100%; /* Takes full width of the grid column */
-    height: 100%; /* Expands to match the height of the text column */
+    aspect-ratio: 4 / 5; /* Fixed ratio so tall/portrait screenshots can't blow out the modal */
     border-radius: 20px;
     border: 1px solid var(--border-white);
     background: rgba(30, 41, 59, 0.3); /* Optional: subtle subtle background hint */
@@ -815,7 +815,6 @@ body.light-mode .theme-toggle {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Remove aspect-ratio: 4 / 5; */
 }
 
 .modal-image img {
